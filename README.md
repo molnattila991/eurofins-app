@@ -1,12 +1,11 @@
 # EurofinsApp
 
-## Development server
+## Run todo api first
+- https://github.com/molnattila991/eurofins-api
+- You can modify API url in environment.ts
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Test on Development server:
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
-
+- git clone https://github.com/molnattila991/eurofins-app
+- cd .\eurofins-app\
+- ng serve
