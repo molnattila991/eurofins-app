@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { TodoItem } from '../../../models/todo-item.interface';
+import { TodoCreateContainerComponent } from '../../todo-dialog/todo-create-container/todo-create-container.component';
 
 @Component({
   selector: 'lib-todo-page-view',
@@ -14,9 +16,17 @@ export class TodoPageViewComponent implements OnInit {
 
   @Input() opened: boolean | null = true;
   @Input() list: TodoItem[] | null = [];
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.viewContainerRef
+    const dialogRef = this.dialog.open(TodoCreateContainerComponent, {
+      width: '250px',
+    });
   }
 
 }

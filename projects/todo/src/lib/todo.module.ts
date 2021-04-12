@@ -3,7 +3,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { TodoPageContainerComponent } from './components/todo-page/todo-page-container/todo-page-container.component';
 import { TodoPageViewComponent } from './components/todo-page/todo-page-view/todo-page-view.component';
 import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +15,9 @@ import { TodoEffects } from './store/todo.effects';
 import { TodoApiService } from './services/todo-api.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TodoDialogModule } from './components/todo-dialog/todo-dialog.module';
 
 const routes: Routes = [
   {
@@ -33,14 +35,17 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     MatListModule,
-    MatCardModule,
     MatDividerModule,
     MatCheckboxModule,
     MatSidenavModule,
     MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature("todo", todoReducer),
     EffectsModule.forFeature([TodoEffects]),
+
+    TodoDialogModule
   ],
   providers: [
     TodoApiService

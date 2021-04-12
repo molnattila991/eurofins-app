@@ -14,7 +14,10 @@ export class TodoEffects {
             .pipe(
                 map(items =>
                     refreshList({ items }),
-                    catchError(() => EMPTY)
+                    catchError((error) => {
+                        console.log(error);
+                        return EMPTY
+                    })
                 ))
         ))
     );
@@ -26,7 +29,7 @@ export class TodoEffects {
                 .pipe(
                     map(() =>
                         refresh(),
-                        catchError(() => EMPTY)
+                        catchError((error) => EMPTY)
                     ))
         ))
     );
@@ -37,7 +40,7 @@ export class TodoEffects {
             .pipe(
                 map(() =>
                     refresh(),
-                    catchError(() => EMPTY)
+                    catchError((error) => EMPTY)
                 ))
         ))
     );

@@ -1,5 +1,4 @@
-
-<mat-drawer-container class="example-container">
+<mat-drawer-container class="container">
     <mat-drawer mode="side" [opened]="opened">
         <div style="width: 250px;">
             <h3 class="form-field-container">Filters</h3>
@@ -8,14 +7,49 @@
     </mat-drawer>
     <mat-drawer-content>
         <div style="height: 100%;">
+            <div class="sticky-header">
+                <button class="sticky-button" mat-mini-fab color="primary" mat-icon-button>
+                    <mat-icon (click)="openDialog()">add</mat-icon>
+                </button>
+            </div>
+
             <mat-list role="list">
                 <ng-container *ngFor="let item of list; let last = last;">
                     <mat-list-item role="listitem">
-                        <mat-checkbox class="example-margin" (click)="completedChanged.emit(item)" [checked]="item.isCompleted">
-                        </mat-checkbox>
-                        {{item.id}} {{item.title}} {{item.description}}
-                        <button mat-raised-button color="primary" (click)="editPushed.emit(item)">Edit</button>
-                        <button mat-raised-button color="primary" (click)="deletePushed.emit(item.id)">Delete</button>
+                        <table>
+                            <tr>
+                                <td>
+                                    <mat-checkbox (click)="completedChanged.emit(item)" [checked]="item.isCompleted">
+                                    </mat-checkbox>
+                                </td>
+                                <td>
+                                    #{{item.id}}
+                                </td>
+                                <td>
+                                    <b>{{item.title}}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+
+                                </td>
+                                <td>
+                                    <span>
+                                        {{item.description}}
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                        <span class="spacer"></span>
+
+                        <button mat-icon-button>
+                            <mat-icon (click)="editPushed.emit(item)">edit</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon (click)="deletePushed.emit(item.id)">delete</mat-icon>
+                        </button>
                     </mat-list-item>
                     <mat-divider *ngIf="!last"></mat-divider>
                 </ng-container>
