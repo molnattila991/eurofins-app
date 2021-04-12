@@ -9,7 +9,7 @@
         <div style="height: 100%;">
             <div class="sticky-header">
                 <button class="sticky-button" mat-mini-fab color="primary" mat-icon-button>
-                    <mat-icon (click)="openDialog()">add</mat-icon>
+                    <mat-icon (click)="openCreateDialog()">add</mat-icon>
                 </button>
             </div>
 
@@ -45,7 +45,7 @@
                         <span class="spacer"></span>
 
                         <button mat-icon-button>
-                            <mat-icon (click)="editPushed.emit(item)">edit</mat-icon>
+                            <mat-icon (click)="openEditDialog(item)">edit</mat-icon>
                         </button>
                         <button mat-icon-button>
                             <mat-icon (click)="deletePushed.emit(item.id)">delete</mat-icon>

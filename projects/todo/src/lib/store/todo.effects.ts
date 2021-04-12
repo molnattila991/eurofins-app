@@ -4,7 +4,7 @@ import { EMPTY } from "rxjs";
 import { catchError, map, switchMap, tap } from "rxjs/operators"
 import { TodoItemProp } from "../models/todo-item-prop.interface";
 import { TodoApiService } from "../services/todo-api.service";
-import { addTodo, deleteTodo, refresh, refreshList } from "./todo.actions";
+import { addTodo, deleteTodo, editTodo, refresh, refreshList } from "./todo.actions";
 
 @Injectable()
 export class TodoEffects {
@@ -37,6 +37,17 @@ export class TodoEffects {
     addTodoItem$ = createEffect(() => this.actions$.pipe(
         ofType(addTodo.type),
         switchMap((action: TodoItemProp) => this.dataProvider.create(action.item)
+            .pipe(
+                map(() =>
+                    refresh(),
+                    catchError((error) => EMPTY)
+                ))
+        ))
+    );
+
+    editTodoItem$ = createEffect(() => this.actions$.pipe(
+        ofType(editTodo.type),
+        switchMap((action: TodoItemProp) => this.dataProvider.update(action.item)
             .pipe(
                 map(() =>
                     refresh(),

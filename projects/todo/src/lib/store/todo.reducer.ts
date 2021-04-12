@@ -14,9 +14,6 @@ export const initialState: TodoModuleState = <TodoModuleState>{
 
 const _todoReducer = createReducer(
     initialState,
-    // on(addTodo, (state) => state),
-    // on(deleteTodo, (state) => state),
-    // on(editTodo, (state) => state),
     on(refreshList, (state, action) => ({ ...state, todoItemsList: action.items }))
 );
 
