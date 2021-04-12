@@ -25,7 +25,8 @@
     "@angular/material": "11.2.8",
     "@angular/cdk": "11.2.8",
     "@ngrx/store": "11.1.0",
-    "@ngrx/effects": "11.1.0"
+    "@ngrx/effects": "11.1.0",
+    "ngx-toastr": "13.2.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1102.8",
