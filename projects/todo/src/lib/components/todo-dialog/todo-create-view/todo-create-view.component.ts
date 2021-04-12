@@ -21,7 +21,7 @@ export class TodoCreateViewComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.formGroup = this.formBuilder.group({
-      title: new FormControl(""),//, [Validators.required]),
+      title: new FormControl("", [Validators.required, Validators.minLength(3)]),
       description: new FormControl("", [Validators.required])
     });
   }
