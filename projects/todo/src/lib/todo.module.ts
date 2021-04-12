@@ -18,6 +18,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TodoDialogModule } from './components/todo-dialog/todo-dialog.module';
+import { TodoListContainerComponent } from './components/todo-list/todo-list-container/todo-list-container.component';
+import { TodoListViewComponent } from './components/todo-list/todo-list-view/todo-list-view.component';
 
 const routes: Routes = [
   {
@@ -28,7 +30,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     TodoPageContainerComponent,
-    TodoPageViewComponent
+    TodoPageViewComponent,
+    TodoListContainerComponent,
+    TodoListViewComponent
   ],
   imports: [
     CommonModule,

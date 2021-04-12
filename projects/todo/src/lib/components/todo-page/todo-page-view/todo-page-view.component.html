@@ -13,47 +13,7 @@
                 </button>
             </div>
 
-            <mat-list role="list">
-                <ng-container *ngFor="let item of list; let last = last;">
-                    <mat-list-item role="listitem">
-                        <table>
-                            <tr>
-                                <td>
-                                    <mat-checkbox (click)="completedChanged.emit(item)" [checked]="item.isCompleted">
-                                    </mat-checkbox>
-                                </td>
-                                <td>
-                                    #{{item.id}}
-                                </td>
-                                <td>
-                                    <b>{{item.title}}</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-
-                                </td>
-                                <td>
-                                    <span>
-                                        {{item.description}}
-                                    </span>
-                                </td>
-                            </tr>
-                        </table>
-
-
-                        <span class="spacer"></span>
-
-                        <button mat-icon-button>
-                            <mat-icon (click)="openEditDialog(item)">edit</mat-icon>
-                        </button>
-                        <button mat-icon-button>
-                            <mat-icon (click)="deletePushed.emit(item.id)">delete</mat-icon>
-                        </button>
-                    </mat-list-item>
-                    <mat-divider *ngIf="!last"></mat-divider>
-                </ng-container>
-            </mat-list>
+            <lib-todo-list-container></lib-todo-list-container>
         </div>
     </mat-drawer-content>
 </mat-drawer-container>

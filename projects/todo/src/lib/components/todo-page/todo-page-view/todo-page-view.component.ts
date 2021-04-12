@@ -11,12 +11,7 @@ import { TodoEditContainerComponent } from '../../todo-dialog/todo-edit-containe
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoPageViewComponent implements OnInit {
-  @Output() editPushed: EventEmitter<TodoItem> = new EventEmitter();
-  @Output() deletePushed: EventEmitter<number> = new EventEmitter();
-  @Output() completedChanged: EventEmitter<TodoItem> = new EventEmitter();
-
   @Input() opened: boolean | null = true;
-  @Input() list: TodoItem[] | null = [];
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -27,15 +22,6 @@ export class TodoPageViewComponent implements OnInit {
     dialogConfig.viewContainerRef
     let dialogRef = this.dialog.open(TodoCreateContainerComponent, {
       width: '300px',
-    });
-  }
-
-  openEditDialog(item: TodoItem): void {
-    let dialogConfig = new MatDialogConfig();
-    dialogConfig.viewContainerRef
-    let dialogRef = this.dialog.open(TodoEditContainerComponent, {
-      width: '300px',
-      data: item
     });
   }
 
