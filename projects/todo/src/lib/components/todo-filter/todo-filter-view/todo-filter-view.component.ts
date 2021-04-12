@@ -32,5 +32,6 @@ export class TodoFilterViewComponent implements OnInit {
 
   clearSend() {
     this.formGroup.setValue({ text: "" }, { emitEvent: false });
+    this.clear.emit();
   }
 }

@@ -15,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { uiReducer } from './state/ui.reducer';
 import { UiSettingsService } from './services/ui-settings.service';
+import { AppEffects } from './state/ui.effects';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { UiSettingsService } from './services/ui-settings.service';
     MatToolbarModule,
     ToastrModule.forRoot(),
     StoreModule.forRoot({ui: uiReducer}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AppEffects]),
   ],
   providers: [
     UiSettingsService

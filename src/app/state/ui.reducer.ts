@@ -1,10 +1,17 @@
 import { createReducer, on } from "@ngrx/store";
-import { UiState } from "../models/ui-state.interface";
 import { closeSideNav, openSideNav } from "./ui.actions";
 
-export const initialState = <UiState>{
-    opened: true
+const load = () => {
+    const loadFromLocalStorage = localStorage.getItem("appState");
+    if (loadFromLocalStorage != undefined) {
+        return (JSON.parse(loadFromLocalStorage)).ui
+    } else {
+        return {
+            opened: true
+        };
+    }
 }
+export const initialState: Readonly<any> = load()
 
 const _uiReducer = createReducer(
     initialState,
