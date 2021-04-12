@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { TodoDialogModule } from './components/todo-dialog/todo-dialog.module';
 import { TodoListContainerComponent } from './components/todo-list/todo-list-container/todo-list-container.component';
 import { TodoListViewComponent } from './components/todo-list/todo-list-view/todo-list-view.component';
+import { TodoFilterModule } from './components/todo-filter/todo-filter.module';
 
 const routes: Routes = [
   {
@@ -49,7 +50,8 @@ const routes: Routes = [
     StoreModule.forFeature("todo", todoReducer),
     EffectsModule.forFeature([TodoEffects]),
 
-    TodoDialogModule
+    TodoDialogModule,
+    TodoFilterModule
   ],
   providers: [
     TodoApiService

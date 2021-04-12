@@ -1,23 +1,35 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { EMPTY } from "rxjs";
-import { catchError, map, switchMap } from "rxjs/operators"
+import { catchError, finalize, map, switchMap } from "rxjs/operators"
 import { TodoItemProp } from "../models/todo-item-prop.interface";
 import { TodoApiService } from "../services/todo-api.service";
 import { addTodo, deleteTodo, editTodo, refresh, refreshList } from "./todo.actions";
 import { ToastrService } from 'ngx-toastr';
+import { Store } from "@ngrx/store";
+import { TodoModuleState } from "../models/todo-module-state.interface";
+import { TodoListFilter } from "../models/todo-list-filter.interface";
 
 @Injectable()
 export class TodoEffects {
     loadTodoList$ = createEffect(() => this.actions$.pipe(
         ofType(refresh.type),
-        switchMap(() => this.dataProvider.getAll()
-            .pipe(
-                map(items =>
-                    refreshList({ items })
-                ),
-                catchError(this.handleApiError.bind(this))
-            )
+        switchMap(() =>
+            this.store.select(state => state.todo.filter)
+                .pipe(
+                    switchMap((item: TodoListFilter) => {
+                        if (item && item.text && item.text != "") {
+                            return this.dataProvider.getAllFiltered(item.text);
+                        } else {
+                            return this.dataProvider.getAll();
+                        }
+                    })
+                ).pipe(
+                    map(items =>
+                        refreshList({ items })
+                    ),
+                    catchError(this.handleApiError.bind(this))
+                )
         ))
     );
 
@@ -60,7 +72,8 @@ export class TodoEffects {
     constructor(
         private actions$: Actions,
         private dataProvider: TodoApiService,
-        private toastr: ToastrService
+        private toastr: ToastrService,
+        private store: Store<{ todo: TodoModuleState }>
     ) { }
 
     handleApiError(error: any) {
