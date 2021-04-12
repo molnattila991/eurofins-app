@@ -12,6 +12,7 @@ export class TodoPageViewComponent implements OnInit {
   @Output() deletePushed: EventEmitter<number> = new EventEmitter();
   @Output() completedChanged: EventEmitter<TodoItem> = new EventEmitter();
 
+  @Input() opened: boolean | null = true;
   @Input() list: TodoItem[] | null = [];
   constructor() { }
 

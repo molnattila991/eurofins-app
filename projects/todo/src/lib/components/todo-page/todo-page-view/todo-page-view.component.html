@@ -1,12 +1,25 @@
-<mat-list role="list">
-    <ng-container *ngFor="let item of list; let last = last;">
-        <mat-list-item role="listitem">
-            <mat-checkbox class="example-margin" (click)="completedChanged.emit(item)" [checked]="item.isCompleted">
-            </mat-checkbox>
-            {{item.id}} {{item.title}} {{item.description}}
-            <button mat-raised-button color="primary" (click)="editPushed.emit(item)">Edit</button>
-            <button mat-raised-button color="primary" (click)="deletePushed.emit(item.id)">Delete</button>
-        </mat-list-item>
-        <mat-divider *ngIf="!last"></mat-divider>
-    </ng-container>
-</mat-list>
+
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" [opened]="opened">
+        <div style="width: 250px;">
+            <h3 class="form-field-container">Filters</h3>
+            <!-- <app-graph-filter-container></app-graph-filter-container> -->
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div style="height: 100%;">
+            <mat-list role="list">
+                <ng-container *ngFor="let item of list; let last = last;">
+                    <mat-list-item role="listitem">
+                        <mat-checkbox class="example-margin" (click)="completedChanged.emit(item)" [checked]="item.isCompleted">
+                        </mat-checkbox>
+                        {{item.id}} {{item.title}} {{item.description}}
+                        <button mat-raised-button color="primary" (click)="editPushed.emit(item)">Edit</button>
+                        <button mat-raised-button color="primary" (click)="deletePushed.emit(item.id)">Delete</button>
+                    </mat-list-item>
+                    <mat-divider *ngIf="!last"></mat-divider>
+                </ng-container>
+            </mat-list>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

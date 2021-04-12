@@ -12,6 +12,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { uiReducer } from './state/ui.reducer';
+import { UiSettingsService } from './services/ui-settings.service';
 
 @NgModule({
   declarations: [
@@ -29,10 +31,12 @@ import { EffectsModule } from '@ngrx/effects';
     MatButtonModule,
     MatToolbarModule,
 
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({ui: uiReducer}),
     EffectsModule.forRoot([]),
   ],
-  providers: [],
+  providers: [
+    UiSettingsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

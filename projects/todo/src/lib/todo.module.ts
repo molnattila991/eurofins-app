@@ -11,10 +11,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { CommonModule } from '@angular/common';
-import { todoReducer } from './stroe/todo.reducer';
-import { TodoEffects } from './stroe/todo.effects';
+import { todoReducer } from './store/todo.reducer';
+import { TodoEffects } from './store/todo.effects';
 import { TodoApiService } from './services/todo-api.service';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
     MatCardModule,
     MatDividerModule,
     MatCheckboxModule,
+    MatSidenavModule,
     MatButtonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature("todo", todoReducer),
