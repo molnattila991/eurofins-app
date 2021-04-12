@@ -21,6 +21,10 @@
       "dom"
     ],
     "paths": {
+      "settings": [
+        "dist/settings/settings",
+        "dist/settings"
+      ],
       "todo": [
         "dist/todo/todo",
         "dist/todo"
