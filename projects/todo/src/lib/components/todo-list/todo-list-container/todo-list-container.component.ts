@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { TodoItem } from '../../../models/todo-item.interface';
 import { TodoModuleState } from '../../../models/todo-module-state.interface';
-import { deleteTodo, refresh } from '../../../store/todo.actions';
+import { deleteTodo, editTodo, refresh } from '../../../store/todo.actions';
 
 @Component({
   selector: 'lib-todo-list-container',
@@ -19,5 +20,9 @@ export class TodoListContainerComponent implements OnInit {
 
   delete(id: number) {
     this.store.dispatch(deleteTodo({ id }));
+  }
+
+  completedChanged(item: TodoItem): void {
+    this.store.dispatch(editTodo({ item: { ...item, isCompleted: !item.isCompleted } }));
   }
 }
