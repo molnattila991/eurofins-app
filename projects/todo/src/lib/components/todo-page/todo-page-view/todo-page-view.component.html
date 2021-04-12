@@ -1,1 +1,12 @@
-<p>todo-page-view works!</p>
+<mat-list role="list">
+    <ng-container *ngFor="let item of list; let last = last;">
+        <mat-list-item role="listitem">
+            <mat-checkbox class="example-margin" (click)="completedChanged.emit(item)" [checked]="item.isCompleted">
+            </mat-checkbox>
+            {{item.id}} {{item.title}} {{item.description}}
+            <button mat-raised-button color="primary" (click)="editPushed.emit(item)">Edit</button>
+            <button mat-raised-button color="primary" (click)="deletePushed.emit(item.id)">Delete</button>
+        </mat-list-item>
+        <mat-divider *ngIf="!last"></mat-divider>
+    </ng-container>
+</mat-list>

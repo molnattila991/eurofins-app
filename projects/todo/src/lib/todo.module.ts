@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { todoReducer } from './stroe/todo.reducer';
 import { TodoEffects } from './stroe/todo.effects';
 import { TodoApiService } from './services/todo-api.service';
+import { MatButtonModule } from '@angular/material/button';
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
     MatCardModule,
     MatDividerModule,
     MatCheckboxModule,
+    MatButtonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature("todo", todoReducer),
     EffectsModule.forFeature([TodoEffects]),
