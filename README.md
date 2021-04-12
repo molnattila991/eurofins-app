@@ -8,4 +8,5 @@
 
 - git clone https://github.com/molnattila991/eurofins-app
 - cd .\eurofins-app\
+- npm install
 - ng serve
