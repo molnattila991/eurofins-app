@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "45802384-6f5f-4788-bd12-7d99b340d6d6"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -122,6 +125,46 @@
             "production": {
               "devServerTarget": "eurofins-app:serve:production"
             }
+          }
+        }
+      }
+    },
+    "todo": {
+      "projectType": "library",
+      "root": "projects/todo",
+      "sourceRoot": "projects/todo/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/todo/tsconfig.lib.json",
+            "project": "projects/todo/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/todo/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/todo/src/test.ts",
+            "tsConfig": "projects/todo/tsconfig.spec.json",
+            "karmaConfig": "projects/todo/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/todo/tsconfig.lib.json",
+              "projects/todo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
