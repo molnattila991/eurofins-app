@@ -81,11 +81,14 @@ export class TodoEffects {
             this.toastr.error('Server cannot be reached.', 'Error');
         }
         if (error.status == 400) {
-            if (error.error && error.error.errors && error.error.errors.Title) {
+            if (error.error && error.error.errors) {
                 let messageHtml = "<ul>";
-                error.error.errors.Title.forEach((message: string) => {
-                    messageHtml += `<li>${message}</li>`;
-                });
+                const errorObject = error.error.errors;
+                Object.keys(errorObject).forEach(errorItem => {
+                    errorObject[errorItem].forEach((message: string) => {
+                        messageHtml += `<li>${message}</li>`;
+                    });
+                })
                 messageHtml += "</ul>";
                 this.toastr.error(messageHtml, 'Error', { enableHtml: true, timeOut: 10000 });
             } else {
