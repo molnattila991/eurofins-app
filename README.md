@@ -6,6 +6,7 @@
 
 ## Run on Development server:
 
+- Git Bash, Node.Js and Angular CLI are required for run the following commands
 - git clone https://github.com/molnattila991/eurofins-app
 - cd .\eurofins-app\
 - npm install
