@@ -11,3 +11,7 @@
 - cd .\eurofins-app\
 - npm install
 - ng serve
+
+## Run cypress e2e tests:
+- run app on development server first
+- run 'npx cypress open' command in your terminal
